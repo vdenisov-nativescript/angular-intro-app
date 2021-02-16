@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: "ns-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
     message: string = 'All is okay!!!';
 
-    ngOnInit() {
-        console.log('init');
+    constructor() {
+        console.log('Hello World');
+        console.dir({ type: 'Apple', color: 'Red' });
     }
 }
