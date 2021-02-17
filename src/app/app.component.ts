@@ -8,4 +8,15 @@ import { Component } from "@angular/core";
         "./pages/login/login.css",
     ]
 })
-export class AppComponent { }
+export class AppComponent {
+    public email = 'test@gmail.com';
+    public isLoggingIn = true;
+
+    public submit() {
+        alert('You\'re using: ' + this.email);
+    }
+
+    public toggleDisplay() {
+        this.isLoggingIn = !this.isLoggingIn;
+    }
+}

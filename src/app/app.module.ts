@@ -1,5 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "@nativescript/angular";
+import { NativeScriptModule, NativeScriptFormsModule } from "@nativescript/angular";
 
 import { AppComponent } from "./app.component";
 
@@ -9,6 +9,7 @@ import { AppComponent } from "./app.component";
     ],
     imports: [
         NativeScriptModule,
+        NativeScriptFormsModule,
     ],
     declarations: [
         AppComponent,
