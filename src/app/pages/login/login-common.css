@@ -2,7 +2,7 @@ StackLayout {
     margin-left: 30;
     margin-right: 30;
     padding-bottom: 15;
-    background-color: white;
+    background-color: lightgreen;
 }
 Image {
     margin-top: 5;
