@@ -3,9 +3,11 @@ import {
     NativeScriptModule,
     NativeScriptFormsModule,
     NativeScriptHttpClientModule,
+    NativeScriptRouterModule,
 } from "@nativescript/angular";
 
 import { AppComponent } from "./app.component";
+import { routes, navigatableComponents } from './app.routing';
 
 @NgModule({
     bootstrap: [
@@ -15,9 +17,12 @@ import { AppComponent } from "./app.component";
         NativeScriptModule,
         NativeScriptFormsModule,
         NativeScriptHttpClientModule,
+        NativeScriptRouterModule,
+        NativeScriptRouterModule.forRoot(routes),
     ],
     declarations: [
         AppComponent,
+        ...navigatableComponents,
     ],
     providers: [],
     schemas: [
