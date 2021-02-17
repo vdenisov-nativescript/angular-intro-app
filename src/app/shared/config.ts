@@ -4,5 +4,5 @@ export class Config {
     // static appUserHeader = "Basic a2lkX0h5SG9UX1JFZjo1MTkxMDJlZWFhMzQ0MzMyODFjN2MyODM3MGQ5OTIzMQ";
     // static token = '';
 
-    static apiUrl = 'https://run.mocky.io/v3/6c43db53-0688-43ca-bf9a-cac70b278964'
+    static apiUrl = 'https://br195pwih6.execute-api.us-west-2.amazonaws.com/dev'
 }
