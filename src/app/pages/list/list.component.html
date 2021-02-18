@@ -1,7 +1,29 @@
+<ActionBar title="Groceries">
+    <ActionItem
+        text="Share"
+        (tap)="share()"
+        android.systemIcon="ic_menu_share_holo_dark"
+        ios.systemIcon="9"
+        ios.position="right"
+    ></ActionItem>
+</ActionBar>
+
 <GridLayout rows="auto, *">
     <GridLayout row="0" columns="*,*,*,*" class="add-bar">
-        <TextField col="0" colSpan="3" #groceryTextField [(ngModel)]="grocery" hint="Enter a grocery item"></TextField>
-        <Button col="3" colSpan="1" text="add" (tap)="add()"></Button>
+        <TextField
+            col="0"
+            colSpan="3"
+            #groceryTextField
+            [(ngModel)]="grocery"
+            hint="Enter a grocery item"
+        ></TextField>
+
+        <Button
+            col="3"
+            colSpan="1"
+            text="add"
+            (tap)="add()"
+        ></Button>
     </GridLayout>
 
     <ListView [items]="groceryList" row="1" class="small-spacing" [class.visible]="listLoaded">
