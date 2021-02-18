@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { Router } from '@angular/router';
+import { Page, View, Color, TextField } from '@nativescript/core';
 
-import { Page, View, Color } from '@nativescript/core';
-
+import { setHintColor } from '../../utils/hint-util';
 import { User } from '../../shared/user/user';
 import { UserService } from '../../shared/user/user.service';
 
@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
     public isLoggingIn = true;
 
     @ViewChild('container') container: ElementRef;
+    @ViewChild('email') email: ElementRef;
+    @ViewChild('password') password: ElementRef;
 
     constructor(
         private router: Router,
@@ -24,6 +26,8 @@ export class LoginComponent implements OnInit {
         private page: Page,
     ) {
         this.user = new User();
+        this.user.email = 'vdenisov.dev@gmail.com';
+        this.user.password = '12345678';
     }
 
     ngOnInit() {
@@ -45,6 +49,7 @@ export class LoginComponent implements OnInit {
 
     public toggleDisplay() {
         this.isLoggingIn = !this.isLoggingIn;
+        this.setTextFieldColors();
 
         const container: View = this.container.nativeElement;
         const background = this.isLoggingIn ? new Color('lightgreen') : new Color('lightblue');
@@ -68,5 +73,18 @@ export class LoginComponent implements OnInit {
                 },
                 () => alert('Unfortunately we were unable to create your account.')
             );
+    }
+
+    private setTextFieldColors() {
+        const emailTextField = <TextField>this.email.nativeElement;
+        const passwordTextField = <TextField>this.password.nativeElement;
+
+        const mainTextColor = new Color(this.isLoggingIn ? 'black' : 'red');
+        emailTextField.color = mainTextColor;
+        passwordTextField.color = mainTextColor;
+
+        const hintColor = new Color(this.isLoggingIn ? '#ACA6A7' : '#C4AFB4');
+        setHintColor({ view: emailTextField, color: hintColor });
+        setHintColor({ view: passwordTextField, color: hintColor });
     }
 }
