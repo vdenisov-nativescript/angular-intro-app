@@ -9,7 +9,6 @@ import { Grocery } from './grocery';
 
 @Injectable()
 export class GroceryListService {
-    // private baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
     private baseUrl = Config.apiUrl + '/grocery';
 
     constructor(private http: HttpClient) { }
@@ -34,7 +33,20 @@ export class GroceryListService {
         return this.http
             .post(this.baseUrl, data, { headers: this.getCommonHeaders() })
             .pipe(
-                map((data: any) => new Grocery(data.id, data.name)),
+                map((res: any) => {
+                    const obj = res.data;
+                    return new Grocery(obj.id, obj.name);
+                }),
+                catchError(this.handleErrors)
+            );
+    }
+
+    public delete(item: Grocery) {
+        const path = this.baseUrl + "/" + item.id;
+
+        return this.http.delete(path, { headers: this.getCommonHeaders() })
+            .pipe(
+                map(data => data),
                 catchError(this.handleErrors)
             );
     }
@@ -42,7 +54,6 @@ export class GroceryListService {
     private getCommonHeaders() {
         return new HttpHeaders({
             "Content-Type": "application/json",
-            // "Authorization": "Kinvey " + Config.token,
         });
     }
 

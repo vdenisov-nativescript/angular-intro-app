@@ -28,7 +28,10 @@
 
     <ListView [items]="groceryList" row="1" class="small-spacing" [class.visible]="listLoaded">
         <ng-template let-item="item">
-            <Label [text]="item.name" class="medium-spacing"></Label>
+            <GridLayout row="0" columns="*,*,*,*,*">
+                <Label col="0" colSpan="3" [text]="item.name" class="medium-spacing"></Label>
+                <Button col="3" colSpan="2" text="Remove" (tap)="delete(item)"></Button>
+            </GridLayout>
         </ng-template>
     </ListView>
 

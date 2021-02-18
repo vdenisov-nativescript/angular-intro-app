@@ -63,6 +63,21 @@ export class ListComponent implements OnInit {
             );
     }
 
+    public delete(grocery: Grocery) {
+        this.groceryListService.delete(grocery)
+            .subscribe(
+                () => {
+                    this.groceryList = this.groceryList.filter(item => item.id !== grocery.id);
+                },
+                () => {
+                    alert({
+                        message: `Grocery "${grocery.name}" wasn't deleted !`,
+                        okButtonText: 'OK'
+                    });
+                },
+            )
+    }
+
     public share() {
         const list = [];
         for (let i = 0, size = this.groceryList.length; i < size; i++) {
