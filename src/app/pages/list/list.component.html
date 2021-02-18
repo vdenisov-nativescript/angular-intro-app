@@ -1,5 +1,10 @@
-<GridLayout>
-    <ListView [items]="groceryList" class="small-spacing">
+<GridLayout rows="auto, *">
+    <GridLayout row="0" columns="*,*,*, *" class="add-bar">
+        <TextField col="0" colSpan="3" #groceryTextField [(ngModel)]="grocery" hint="Enter a grocery item"></TextField>
+        <Button col="3" colSpan="1" text="add" (tap)="add()"></Button>
+    </GridLayout>
+
+    <ListView [items]="groceryList" row="1" class="small-spacing">
         <ng-template let-item="item">
             <Label [text]="item.name" class="medium-spacing"></Label>
         </ng-template>

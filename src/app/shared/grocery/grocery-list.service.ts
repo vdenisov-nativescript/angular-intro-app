@@ -28,6 +28,17 @@ export class GroceryListService {
             );
     }
 
+    public add(text: string) {
+        const data = JSON.stringify({ name: text });
+
+        return this.http
+            .post(this.baseUrl, data, { headers: this.getCommonHeaders() })
+            .pipe(
+                map((data: any) => new Grocery(data.id, data.name)),
+                catchError(this.handleErrors)
+            );
+    }
+
     private getCommonHeaders() {
         return new HttpHeaders({
             "Content-Type": "application/json",
